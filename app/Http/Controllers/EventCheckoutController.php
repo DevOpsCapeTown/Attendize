@@ -398,7 +398,7 @@ class EventCheckoutController extends Controller
                      * when we return
                      */
                     session()->push('ticket_order_' . $event_id . '.transaction_data', $transaction_data);
-					Log::info("Redirect url: " . $response->getRedirectUrl());
+                    Log::info("Redirect url: " . $response->getRedirectUrl());
 
                     $return = [
                         'status'       => 'success',
