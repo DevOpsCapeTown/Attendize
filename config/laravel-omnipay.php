@@ -3,10 +3,14 @@
 return [
 
     // The default gateway to use
-    'default' => 'stripe',
+    'default' => 'payfast',
 
     // Add in each gateway here
     'gateways' => [
+        'payfast' => [
+            'driver'  => 'PayFast',
+            'options' => [],
+        ],
         'paypal' => [
             'driver'  => 'PayPal_Express',
             'options' => [

@@ -11,7 +11,8 @@ return [
     'payment_gateway_stripe'   => 1,
     'payment_gateway_paypal'   => 2,
     'payment_gateway_coinbase' => 3,
-	'payment_gateway_migs'     => 4,
+    'payment_gateway_migs'     => 4,
+    'payment_gateway_payfast'  => 5,
 
     'outgoing_email_noreply' => env('MAIL_FROM_ADDRESS'),
     'outgoing_email'         => env('MAIL_FROM_ADDRESS'),
@@ -62,7 +63,7 @@ return [
     'default_datetime_format'    => 'F j, Y, g:i a',
     'default_query_cache'        => 120, #Minutes
     'default_locale'             => 'en',
-    'default_payment_gateway'    => 1, #Stripe=1 Paypal=2 BitPay=3 MIGS=4
+    'default_payment_gateway'    => 5, #Stripe=1 Paypal=2 BitPay=3 MIGS=4 PayFast=5
 
     'cdn_url_user_assets'   => '',
     'cdn_url_static_assets' => ''
