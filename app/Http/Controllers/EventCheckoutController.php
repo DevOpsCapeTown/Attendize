@@ -370,6 +370,22 @@ class EventCheckoutController extends Controller
                         $transaction_data['description'] = "Ticket sales " . $transaction_data['transactionId'];
 
                         break;
+                    case config('attendize.payment_gateway_payfast'):
+
+                        $transaction_data += [
+                            'cancelUrl' => route('showEventCheckoutPaymentReturn', [
+                                'event_id'             => $event_id,
+                                'is_payment_cancelled' => 1
+                            ]),
+                            'returnUrl' => route('showEventCheckoutPaymentReturn', [
+                                'event_id'              => $event_id,
+                                'is_payment_successful' => 1
+                            ]),
+                            'brandName' => isset($ticket_order['account_payment_gateway']->config['brandingName'])
+                                ? $ticket_order['account_payment_gateway']->config['brandingName']
+                                : $event->organiser->name
+                        ];
+                        break;
                     default:
                         Log::error('No payment gateway configured.');
                         return repsonse()->json([
