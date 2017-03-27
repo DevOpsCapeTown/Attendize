@@ -373,6 +373,7 @@ class EventCheckoutController extends Controller
                     case config('attendize.payment_gateway_payfast'):
 
                         $transaction_data += [
+                            'transactionId' => $event_id . date('YmdHis'),       // TODO: Where to generate transaction id?
                             'cancelUrl' => route('showEventCheckoutPaymentReturn', [
                                 'event_id'             => $event_id,
                                 'is_payment_cancelled' => 1
@@ -381,9 +382,6 @@ class EventCheckoutController extends Controller
                                 'event_id'              => $event_id,
                                 'is_payment_successful' => 1
                             ]),
-                            'brandName' => isset($ticket_order['account_payment_gateway']->config['brandingName'])
-                                ? $ticket_order['account_payment_gateway']->config['brandingName']
-                                : $event->organiser->name
                         ];
                         break;
                     default:
